@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_31_003438) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_07_195118) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -59,6 +59,18 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_003438) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.bigint "product_id", null: false
+    t.string "name"
+    t.text "description"
+    t.text "url"
+    t.float "cost"
+    t.float "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_features_on_product_id"
   end
 
   create_table "integrations_stripe_installations", force: :cascade do |t|
@@ -175,6 +187,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_003438) do
     t.index ["user_id"], name: "index_oauth_stripe_accounts_on_user_id"
   end
 
+  create_table "products", force: :cascade do |t|
+    t.bigint "team_id", null: false
+    t.string "name"
+    t.text "description"
+    t.text "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["team_id"], name: "index_products_on_team_id"
+  end
+
   create_table "scaffolding_absolutely_abstract_creative_concepts", force: :cascade do |t|
     t.bigint "team_id", null: false
     t.string "name"
@@ -227,6 +249,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_003438) do
     t.index ["tangible_thing_id"], name: "index_tangible_things_assignments_on_tangible_thing_id"
   end
 
+  create_table "strengths", force: :cascade do |t|
+    t.bigint "feature_id", null: false
+    t.string "name"
+    t.text "description"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id"], name: "index_strengths_on_feature_id"
+  end
+
   create_table "teams", id: :serial, force: :cascade do |t|
     t.string "name"
     t.string "slug"
@@ -271,6 +303,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_003438) do
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["platform_agent_of_id"], name: "index_users_on_platform_agent_of_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  end
+
+  create_table "weaknesses", force: :cascade do |t|
+    t.bigint "feature_id", null: false
+    t.string "name"
+    t.text "description"
+    t.string "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id"], name: "index_weaknesses_on_feature_id"
   end
 
   create_table "webhooks_incoming_bullet_train_webhooks", force: :cascade do |t|
@@ -340,6 +382,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_003438) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "features", "products"
   add_foreign_key "integrations_stripe_installations", "oauth_stripe_accounts"
   add_foreign_key "integrations_stripe_installations", "teams"
   add_foreign_key "invitations", "teams"
@@ -355,13 +398,16 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_31_003438) do
   add_foreign_key "oauth_access_tokens", "oauth_applications", column: "application_id"
   add_foreign_key "oauth_applications", "teams"
   add_foreign_key "oauth_stripe_accounts", "users"
+  add_foreign_key "products", "teams"
   add_foreign_key "scaffolding_absolutely_abstract_creative_concepts", "teams"
   add_foreign_key "scaffolding_absolutely_abstract_creative_concepts_collaborators", "memberships"
   add_foreign_key "scaffolding_absolutely_abstract_creative_concepts_collaborators", "scaffolding_absolutely_abstract_creative_concepts", column: "creative_concept_id"
   add_foreign_key "scaffolding_completely_concrete_tangible_things", "scaffolding_absolutely_abstract_creative_concepts", column: "absolutely_abstract_creative_concept_id"
   add_foreign_key "scaffolding_completely_concrete_tangible_things_assignments", "memberships"
   add_foreign_key "scaffolding_completely_concrete_tangible_things_assignments", "scaffolding_completely_concrete_tangible_things", column: "tangible_thing_id"
+  add_foreign_key "strengths", "features"
   add_foreign_key "users", "oauth_applications", column: "platform_agent_of_id"
+  add_foreign_key "weaknesses", "features"
   add_foreign_key "webhooks_outgoing_endpoints", "scaffolding_absolutely_abstract_creative_concepts"
   add_foreign_key "webhooks_outgoing_endpoints", "teams"
   add_foreign_key "webhooks_outgoing_events", "teams"
