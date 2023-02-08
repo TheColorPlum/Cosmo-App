@@ -32,7 +32,10 @@ shallow do
       end
 
       resources :products do
-        resources :features
+        resources :features do
+          resources :strengths
+          resources :weaknesses
+        end
       end
     end
   end

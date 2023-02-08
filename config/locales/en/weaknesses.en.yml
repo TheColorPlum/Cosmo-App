@@ -1,0 +1,103 @@
+en:
+  weaknesses: &weaknesses
+    label: &label Weaknesses
+    breadcrumbs:
+      label: *label
+    navigation:
+      label: *label
+      icon: fal fa-puzzle-piece
+    buttons: &buttons
+      new: Add New Weakness
+      create: Create Weakness
+      edit: Edit Weakness
+      update: Update Weakness
+      destroy: Remove Weakness
+      shorthand:
+        edit: Edit
+        destroy: Delete
+      confirmations:
+        # TODO customize for your use-case.
+        destroy: Are you sure you want to remove %{weakness_name}? This will also remove any child resources and can't be undone.
+    fields: &fields
+      id:
+        heading: Weakness ID
+      feature_id:
+        heading: Feature ID
+      name:
+        _: &name Name
+        label: *name
+        heading: *name
+      description:
+        _: &description Description
+        label: *description
+        heading: *description
+      category:
+        _: &category Category
+        label: *category
+        heading: *category
+        options:
+          one: One
+          two: Two
+          three: Three
+      # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        _: &created_at Added
+        label: *created_at
+        heading: *created_at
+      updated_at:
+        _: &updated_at Updated
+        label: *updated_at
+        heading: *updated_at
+    api:
+      collection_actions: "Collection Actions for Weaknesses"
+      index: "List Weaknesses"
+      create: "Add a New Weakness"
+      member_actions: "Actions for an Individual Weakness"
+      show: "Retrieve a Weakness"
+      update: "Update a Weakness"
+      destroy: "Delete a Weakness"
+      fields: *fields
+    index:
+      section: "%{features_possessive} Weaknesses"
+      contexts:
+        feature:
+          header: Weaknesses
+          description: Below is a list of Weaknesses that have been added for %{feature_name}.
+          description_empty: No Weaknesses have been added for %{feature_name}.
+      fields: *fields
+      buttons: *buttons
+    show:
+      section: "%{weakness_name}"
+      header: Weakness Details
+      description: Below are the details we have for %{weakness_name}.
+      manage_description: You'll also find options for updating these details or removing %{weakness_name} from %{feature_name} entirely.
+      fields: *fields
+      buttons: *buttons
+    form: &form
+      buttons: *buttons
+      fields: *fields
+    new:
+      section: "New Weakness for %{feature_name}"
+      header: New Weakness Details
+      description: Please provide the details of the new Weakness you'd like to add to %{feature_name}.
+      form: *form
+    edit:
+      section: "%{weakness_name}"
+      header: Edit Weakness Details
+      description: You can update the details or settings for %{weakness_name} below.
+      form: *form
+    notifications:
+      created: Weakness was successfully created.
+      updated: Weakness was successfully updated.
+      destroyed: Weakness was successfully destroyed.
+  account:
+    weaknesses: *weaknesses
+  activerecord:
+    attributes:
+      weakness:
+        name: *name
+        description: *description
+        category: *category
+        # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at
+        updated_at: *updated_at

@@ -1,0 +1,8 @@
+<% weakness ||= @weakness %>
+<% feature ||= @feature || weakness&.feature %>
+<%= render 'account/features/breadcrumbs', feature: feature %>
+<%= render 'account/shared/breadcrumb', label: t('.label'), url: [:account, feature, :weaknesses] %>
+<% if weakness&.persisted? %>
+  <%= render 'account/shared/breadcrumb', label: weakness.label_string, url: [:account, weakness] %>
+<% end %>
+<%= render 'account/shared/breadcrumbs/actions', only_for: 'weaknesses' %>

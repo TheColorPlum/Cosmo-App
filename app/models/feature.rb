@@ -6,6 +6,8 @@ class Feature < ApplicationRecord
   belongs_to :product
   # 🚅 add belongs_to associations above.
 
+  has_many :strengths, dependent: :destroy
+  has_many :weaknesses, dependent: :destroy
   # 🚅 add has_many associations above.
 
   has_one :team, through: :product

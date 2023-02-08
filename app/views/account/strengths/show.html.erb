@@ -1,28 +1,28 @@
 <%= render 'account/shared/page' do |p| %>
   <% p.content_for :title, t('.section') %>
   <% p.content_for :body do %>
-    <%= updates_for @feature do %>
+    <%= updates_for @strength do %>
       <%= render 'account/shared/box', divider: true do |p| %>
         <% p.content_for :title, t('.header') %>
         <% p.content_for :description do %>
           <%= t('.description') %>
-          <%= t('.manage_description') if can? :manage, @feature %>
+          <%= t('.manage_description') if can? :manage, @strength %>
         <% end %>
 
         <% p.content_for :body do %>
-          <% with_attribute_settings object: @feature, strategy: :label do %>
+          <% with_attribute_settings object: @strength, strategy: :label do %>
             <%= render 'shared/attributes/text', attribute: :name %>
             <%= render 'shared/attributes/text', attribute: :description %>
-            <%= render 'shared/attributes/text', attribute: :url %>
+            <%= render 'shared/attributes/option', attribute: :category %>
             <%# 🚅 super scaffolding will insert new fields above this line. %>
           <% end %>
         <% end %>
 
         <% p.content_for :actions do %>
-          <%= link_to t('.buttons.edit'), [:edit, :account, @feature], class: first_button_primary if can? :edit, @feature %>
+          <%= link_to t('.buttons.edit'), [:edit, :account, @strength], class: first_button_primary if can? :edit, @strength %>
           <%# 🚅 super scaffolding will insert new action model buttons above this line. %>
-          <%= button_to t('.buttons.destroy'), [:account, @feature], method: :delete, class: first_button_primary, data: { confirm: t('.buttons.confirmations.destroy', model_locales(@feature)) } if can? :destroy, @feature %>
-          <%= link_to t('global.buttons.back'), [:account, @product, :features], class: first_button_primary %>
+          <%= button_to t('.buttons.destroy'), [:account, @strength], method: :delete, class: first_button_primary, data: { confirm: t('.buttons.confirmations.destroy', model_locales(@strength)) } if can? :destroy, @strength %>
+          <%= link_to t('global.buttons.back'), [:account, @feature, :strengths], class: first_button_primary %>
         <% end %>
 
         <% p.content_for :raw_footer do %>
@@ -31,8 +31,6 @@
       <% end %>
     <% end %>
 
-    <%= render 'account/strengths/index', strengths: @feature.strengths, hide_back: true %>
-    <%= render 'account/weaknesses/index', weaknesses: @feature.weaknesses, hide_back: true %>
     <%# 🚅 super scaffolding will insert new children above this line. %>
   <% end %>
 <% end %>

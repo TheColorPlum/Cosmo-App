@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :strength do
-    feature { nil }
+    association :feature
     name { "MyString" }
     description { "MyText" }
     category { "MyString" }

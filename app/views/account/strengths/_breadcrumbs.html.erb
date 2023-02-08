@@ -1,0 +1,8 @@
+<% strength ||= @strength %>
+<% feature ||= @feature || strength&.feature %>
+<%= render 'account/features/breadcrumbs', feature: feature %>
+<%= render 'account/shared/breadcrumb', label: t('.label'), url: [:account, feature, :strengths] %>
+<% if strength&.persisted? %>
+  <%= render 'account/shared/breadcrumb', label: strength.label_string, url: [:account, strength] %>
+<% end %>
+<%= render 'account/shared/breadcrumbs/actions', only_for: 'strengths' %>

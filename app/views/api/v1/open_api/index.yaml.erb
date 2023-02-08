@@ -21,6 +21,8 @@ components:
     <%= automatic_components_for Scaffolding::CompletelyConcrete::TangibleThing unless scaffolding_things_disabled? %>
     <%= automatic_components_for Product %>
     <%= automatic_components_for Feature %>
+    <%= automatic_components_for Strength %>
+    <%= automatic_components_for Weakness %>
     <%# 🚅 super scaffolding will insert new components above this line. %>
   parameters:
     id:
@@ -54,4 +56,6 @@ paths:
   <%= automatic_paths_for Scaffolding::CompletelyConcrete::TangibleThing, Scaffolding::AbsolutelyAbstract::CreativeConcept unless scaffolding_things_disabled? %>
   <%= automatic_paths_for Product, Team %>
   <%= automatic_paths_for Feature, Product %>
+  <%= automatic_paths_for Strength, Feature %>
+  <%= automatic_paths_for Weakness, Feature %>
   <%# 🚅 super scaffolding will insert new paths above this line. %>
