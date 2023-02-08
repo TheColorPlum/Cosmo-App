@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_07_195118) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_07_204116) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -253,7 +253,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_195118) do
     t.bigint "feature_id", null: false
     t.string "name"
     t.text "description"
-    t.string "type"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["feature_id"], name: "index_strengths_on_feature_id"
@@ -309,7 +309,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_195118) do
     t.bigint "feature_id", null: false
     t.string "name"
     t.text "description"
-    t.string "type"
+    t.string "category"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["feature_id"], name: "index_weaknesses_on_feature_id"
@@ -376,7 +376,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_195118) do
     t.string "uuid"
     t.jsonb "payload"
     t.string "event_type_id"
-    t.integer "api_version", null: false
+    t.integer "api_version", default: 1, null: false
     t.index ["team_id"], name: "index_webhooks_outgoing_events_on_team_id"
   end
 

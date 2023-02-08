@@ -1,11 +1,11 @@
 en:
   application:
-    name: Cosmo
+    name: Untitled Application
     owner: Unidentified Developer
     description: "You can update this description in `config/locales/en/application.en.yml`."
-    keywords: cosmo seo keywords
+    keywords: untitled application seo keywords
     support_email: change.me@localhost
-    key: cosmo
+    key: untitled_application
   webhooks/outgoing/endpoints:
     fields:
       api_version:
