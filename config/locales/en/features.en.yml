@@ -35,6 +35,14 @@ en:
         _: &url Url
         label: *url
         heading: *url
+      cost:
+        _: &cost Cost
+        label: *cost
+        heading: *cost
+      price:
+        _: &price Price
+        label: *price
+        heading: *price
       # 🚅 super scaffolding will insert new fields above this line.
       created_at:
         _: &created_at Added
@@ -94,6 +102,8 @@ en:
         name: *name
         description: *description
         url: *url
+        cost: *cost
+        price: *price
         # 🚅 super scaffolding will insert new activerecord attributes above this line.
         created_at: *created_at
         updated_at: *updated_at

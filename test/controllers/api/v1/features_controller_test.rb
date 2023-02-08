@@ -25,6 +25,8 @@ class Api::V1::FeaturesControllerTest < Api::Test
       assert_equal_or_nil feature_data['name'], feature.name
       assert_equal_or_nil feature_data['description'], feature.description
       assert_equal_or_nil feature_data['url'], feature.url
+      assert_equal_or_nil feature_data['cost'], feature.cost
+      assert_equal_or_nil feature_data['price'], feature.price
       # 🚅 super scaffolding will insert new fields above this line.
 
       assert_equal feature_data["product_id"], feature.product_id
@@ -86,6 +88,8 @@ class Api::V1::FeaturesControllerTest < Api::Test
           name: 'Alternative String Value',
           description: 'Alternative String Value',
           url: 'Alternative String Value',
+          cost: 'Alternative String Value',
+          price: 'Alternative String Value',
           # 🚅 super scaffolding will also insert new fields above this line.
         }
       }
@@ -100,6 +104,8 @@ class Api::V1::FeaturesControllerTest < Api::Test
       assert_equal @feature.name, 'Alternative String Value'
       assert_equal @feature.description, 'Alternative String Value'
       assert_equal @feature.url, 'Alternative String Value'
+      assert_equal @feature.cost, 'Alternative String Value'
+      assert_equal @feature.price, 'Alternative String Value'
       # 🚅 super scaffolding will additionally insert new fields above this line.
 
       # Also ensure we can't do that same action as another user.
