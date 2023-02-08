@@ -1,0 +1,89 @@
+en:
+  content_hubs: &content_hubs
+    label: &label Content Hubs
+    breadcrumbs:
+      label: *label
+    navigation:
+      label: *label
+      icon: ti ti-archive
+    buttons: &buttons
+      new: Add New Content Hub
+      create: Create Content Hub
+      edit: Edit Content Hub
+      update: Update Content Hub
+      destroy: Remove Content Hub
+      shorthand:
+        edit: Edit
+        destroy: Delete
+      confirmations:
+        # TODO customize for your use-case.
+        destroy: Are you sure you want to remove %{content_hub_name}? This will also remove any child resources and can't be undone.
+    fields: &fields
+      id:
+        heading: Content Hub ID
+      team_id:
+        heading: Team ID
+      title:
+        _: &title Title
+        label: *title
+        heading: *title
+      # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        _: &created_at Added
+        label: *created_at
+        heading: *created_at
+      updated_at:
+        _: &updated_at Updated
+        label: *updated_at
+        heading: *updated_at
+    api:
+      collection_actions: "Collection Actions for Content Hubs"
+      index: "List Content Hubs"
+      create: "Add a New Content Hub"
+      member_actions: "Actions for an Individual Content Hub"
+      show: "Retrieve a Content Hub"
+      update: "Update a Content Hub"
+      destroy: "Delete a Content Hub"
+      fields: *fields
+    index:
+      section: "%{teams_possessive} Content Hubs"
+      contexts:
+        team:
+          header: Content Hubs
+          description: Below is a list of Content Hubs that have been added for %{team_name}.
+          description_empty: No Content Hubs have been added for %{team_name}.
+      fields: *fields
+      buttons: *buttons
+    show:
+      section: "%{content_hub_name}"
+      header: Content Hub Details
+      description: Below are the details we have for %{content_hub_name}.
+      manage_description: You'll also find options for updating these details or removing %{content_hub_name} from %{team_name} entirely.
+      fields: *fields
+      buttons: *buttons
+    form: &form
+      buttons: *buttons
+      fields: *fields
+    new:
+      section: "New Content Hub for %{team_name}"
+      header: New Content Hub Details
+      description: Please provide the details of the new Content Hub you'd like to add to %{team_name}.
+      form: *form
+    edit:
+      section: "%{content_hub_name}"
+      header: Edit Content Hub Details
+      description: You can update the details or settings for %{content_hub_name} below.
+      form: *form
+    notifications:
+      created: Content Hub was successfully created.
+      updated: Content Hub was successfully updated.
+      destroyed: Content Hub was successfully destroyed.
+  account:
+    content_hubs: *content_hubs
+  activerecord:
+    attributes:
+      content_hub:
+        title: *title
+        # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at
+        updated_at: *updated_at
