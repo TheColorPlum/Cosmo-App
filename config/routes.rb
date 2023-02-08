@@ -73,6 +73,8 @@ Rails.application.routes.draw do
             resources :weaknesses
           end
         end
+
+        resources :contents
       end
     end
   end

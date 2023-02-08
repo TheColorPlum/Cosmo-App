@@ -5,7 +5,7 @@
       <% p.content_for :title, t('.header') %>
       <% p.content_for :description, t('.description') %>
       <% p.content_for :body do %>
-        <%= render 'form', content_hub: @content_hub %>
+        <%= render 'form', content: @content %>
       <% end %>
     <% end %>
   <% end %>

@@ -1,5 +1,6 @@
 default:
   models:
+    Content: read
     Weakness: read
     Strength: read
     Feature: read
@@ -32,6 +33,7 @@ admin:
     - admin
     - editor
   models:
+    Content: manage
     Weakness: manage
     Strength: manage
     Feature: manage

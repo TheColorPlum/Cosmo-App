@@ -5,7 +5,7 @@ class CreateContents < ActiveRecord::Migration[7.0]
       t.string :title
       t.text :description
       t.text :url
-      t.boolean :active
+      t.boolean :active, default: false
 
       t.timestamps
     end

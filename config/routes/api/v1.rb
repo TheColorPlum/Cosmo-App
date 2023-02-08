@@ -37,6 +37,8 @@ shallow do
           resources :weaknesses
         end
       end
+
+      resources :contents
     end
   end
 end

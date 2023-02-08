@@ -23,6 +23,7 @@ components:
     <%= automatic_components_for Feature %>
     <%= automatic_components_for Strength %>
     <%= automatic_components_for Weakness %>
+    <%= automatic_components_for Content %>
     <%# 🚅 super scaffolding will insert new components above this line. %>
   parameters:
     id:
@@ -58,4 +59,5 @@ paths:
   <%= automatic_paths_for Feature, Product %>
   <%= automatic_paths_for Strength, Feature %>
   <%= automatic_paths_for Weakness, Feature %>
+  <%= automatic_paths_for Content, Team %>
   <%# 🚅 super scaffolding will insert new paths above this line. %>

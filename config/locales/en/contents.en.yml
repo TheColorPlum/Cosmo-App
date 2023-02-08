@@ -1,0 +1,107 @@
+en:
+  contents: &contents
+    label: &label Contents
+    breadcrumbs:
+      label: *label
+    navigation:
+      label: *label
+      icon: ti ti-blackboard
+    buttons: &buttons
+      new: Add New Content
+      create: Create Content
+      edit: Edit Content
+      update: Update Content
+      destroy: Remove Content
+      shorthand:
+        edit: Edit
+        destroy: Delete
+      confirmations:
+        # TODO customize for your use-case.
+        destroy: Are you sure you want to remove %{content_name}? This will also remove any child resources and can't be undone.
+    fields: &fields
+      id:
+        heading: Content ID
+      team_id:
+        heading: Team ID
+      title:
+        _: &title Title
+        label: *title
+        heading: *title
+      description:
+        _: &description Description
+        label: *description
+        heading: *description
+      url:
+        _: &url Url
+        label: *url
+        heading: *url
+      active:
+        _: &active Active
+        label: *active
+        heading: *active
+        options:
+          yes: "Yes"
+          no: "No"
+      # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        _: &created_at Added
+        label: *created_at
+        heading: *created_at
+      updated_at:
+        _: &updated_at Updated
+        label: *updated_at
+        heading: *updated_at
+    api:
+      collection_actions: "Collection Actions for Contents"
+      index: "List Contents"
+      create: "Add a New Content"
+      member_actions: "Actions for an Individual Content"
+      show: "Retrieve a Content"
+      update: "Update a Content"
+      destroy: "Delete a Content"
+      fields: *fields
+    index:
+      section: "%{teams_possessive} Contents"
+      contexts:
+        team:
+          header: Contents
+          description: Below is a list of Contents that have been added for %{team_name}.
+          description_empty: No Contents have been added for %{team_name}.
+      fields: *fields
+      buttons: *buttons
+    show:
+      section: "%{content_name}"
+      header: Content Details
+      description: Below are the details we have for %{content_name}.
+      manage_description: You'll also find options for updating these details or removing %{content_name} from %{team_name} entirely.
+      fields: *fields
+      buttons: *buttons
+    form: &form
+      buttons: *buttons
+      fields: *fields
+    new:
+      section: "New Content for %{team_name}"
+      header: New Content Details
+      description: Please provide the details of the new Content you'd like to add to %{team_name}.
+      form: *form
+    edit:
+      section: "%{content_name}"
+      header: Edit Content Details
+      description: You can update the details or settings for %{content_name} below.
+      form: *form
+    notifications:
+      created: Content was successfully created.
+      updated: Content was successfully updated.
+      destroyed: Content was successfully destroyed.
+  account:
+    contents: *contents
+  activerecord:
+    attributes:
+      content:
+        title: *title
+        description: *description
+        url: *url
+        active: *active
+        # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at
+        updated_at: *updated_at

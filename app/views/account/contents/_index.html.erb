@@ -1,24 +1,24 @@
-<% content_hubs = content_hubs.accessible_by(current_ability) %>
+<% contents = contents.accessible_by(current_ability) %>
 <% team = @team || @team %>
 <% context ||= team %>
-<% collection ||= :content_hubs %>
+<% collection ||= :contents %>
 <% hide_actions ||= false %>
 <% hide_back ||= false %>
 
 <% pagy ||= nil %>
-<% pagy, content_hubs = pagy(content_hubs, page_param: :content_hubs_page) unless pagy %>
+<% pagy, contents = pagy(contents, page_param: :contents_page) unless pagy %>
 
 <%= action_model_select_controller do %>
   <% updates_for context, collection do %>
     <%= render 'account/shared/box', pagy: pagy do |p| %>
       <% p.content_for :title, t(".contexts.#{context.class.name.underscore}.header") %>
       <% p.content_for :description do %>
-        <%= t(".contexts.#{context.class.name.underscore}.description#{"_empty" unless content_hubs.any?}") %>
-        <%= render "shared/limits/index", model: content_hubs.model %>
+        <%= t(".contexts.#{context.class.name.underscore}.description#{"_empty" unless contents.any?}") %>
+        <%= render "shared/limits/index", model: contents.model %>
       <% end %>
 
       <% p.content_for :table do %>
-        <% if content_hubs.any? %>
+        <% if contents.any? %>
           <table class="table">
             <thead>
               <tr>
@@ -30,8 +30,8 @@
               </tr>
             </thead>
             <tbody>
-              <% content_hubs.each do |content_hub| %>
-                <%= render 'account/content_hubs/content_hub', content_hub: content_hub %>
+              <% contents.each do |content| %>
+                <%= render 'account/contents/content', content: content %>
               <% end %>
             </tbody>
           </table>
@@ -41,8 +41,8 @@
       <% p.content_for :actions do %>
         <% unless hide_actions %>
           <% if context == team %>
-            <% if can? :create, ContentHub.new(team: team) %>
-              <%= link_to t('.buttons.new'), [:new, :account, team, :content_hub], class: "#{first_button_primary(:content_hub)} new" %>
+            <% if can? :create, Content.new(team: team) %>
+              <%= link_to t('.buttons.new'), [:new, :account, team, :content], class: "#{first_button_primary(:content)} new" %>
             <% end %>
           <% end %>
 
@@ -51,7 +51,7 @@
           <%= render "shared/bulk_action_select" %>
 
           <% unless hide_back %>
-            <%= link_to t('global.buttons.back'), [:account, context], class: "#{first_button_primary(:content_hub)} back" %>
+            <%= link_to t('global.buttons.back'), [:account, context], class: "#{first_button_primary(:content)} back" %>
           <% end %>
         <% end %>
       <% end %>

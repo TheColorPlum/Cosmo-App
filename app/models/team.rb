@@ -6,6 +6,7 @@ class Team < ApplicationRecord
   # 🚅 add belongs_to associations above.
 
   has_many :products, dependent: :destroy
+  has_many :contents, dependent: :destroy
   # 🚅 add has_many associations above.
 
   # 🚅 add oauth providers above.
