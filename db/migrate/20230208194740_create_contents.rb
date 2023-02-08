@@ -3,7 +3,7 @@ class CreateContents < ActiveRecord::Migration[7.0]
     create_table :contents do |t|
       t.references :team, null: false, foreign_key: true
       t.string :title
-      t.text :desxription
+      t.text :description
       t.text :url
       t.boolean :active
 
