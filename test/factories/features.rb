@@ -1,6 +1,6 @@
 FactoryBot.define do
   factory :feature do
-    product { nil }
+    association :product
     name { "MyString" }
     description { "MyText" }
     url { "MyText" }

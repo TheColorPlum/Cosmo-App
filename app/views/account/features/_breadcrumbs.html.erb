@@ -1,0 +1,8 @@
+<% feature ||= @feature %>
+<% product ||= @product || feature&.product %>
+<%= render 'account/products/breadcrumbs', product: product %>
+<%= render 'account/shared/breadcrumb', label: t('.label'), url: [:account, product, :features] %>
+<% if feature&.persisted? %>
+  <%= render 'account/shared/breadcrumb', label: feature.label_string, url: [:account, feature] %>
+<% end %>
+<%= render 'account/shared/breadcrumbs/actions', only_for: 'features' %>

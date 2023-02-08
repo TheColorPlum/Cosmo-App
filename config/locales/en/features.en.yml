@@ -1,0 +1,99 @@
+en:
+  features: &features
+    label: &label Features
+    breadcrumbs:
+      label: *label
+    navigation:
+      label: *label
+      icon: fal fa-puzzle-piece
+    buttons: &buttons
+      new: Add New Feature
+      create: Create Feature
+      edit: Edit Feature
+      update: Update Feature
+      destroy: Remove Feature
+      shorthand:
+        edit: Edit
+        destroy: Delete
+      confirmations:
+        # TODO customize for your use-case.
+        destroy: Are you sure you want to remove %{feature_name}? This will also remove any child resources and can't be undone.
+    fields: &fields
+      id:
+        heading: Feature ID
+      product_id:
+        heading: Product ID
+      name:
+        _: &name Name
+        label: *name
+        heading: *name
+      description:
+        _: &description Description
+        label: *description
+        heading: *description
+      url:
+        _: &url Url
+        label: *url
+        heading: *url
+      # 🚅 super scaffolding will insert new fields above this line.
+      created_at:
+        _: &created_at Added
+        label: *created_at
+        heading: *created_at
+      updated_at:
+        _: &updated_at Updated
+        label: *updated_at
+        heading: *updated_at
+    api:
+      collection_actions: "Collection Actions for Features"
+      index: "List Features"
+      create: "Add a New Feature"
+      member_actions: "Actions for an Individual Feature"
+      show: "Retrieve a Feature"
+      update: "Update a Feature"
+      destroy: "Delete a Feature"
+      fields: *fields
+    index:
+      section: "%{products_possessive} Features"
+      contexts:
+        product:
+          header: Features
+          description: Below is a list of Features that have been added for %{product_name}.
+          description_empty: No Features have been added for %{product_name}.
+      fields: *fields
+      buttons: *buttons
+    show:
+      section: "%{feature_name}"
+      header: Feature Details
+      description: Below are the details we have for %{feature_name}.
+      manage_description: You'll also find options for updating these details or removing %{feature_name} from %{product_name} entirely.
+      fields: *fields
+      buttons: *buttons
+    form: &form
+      buttons: *buttons
+      fields: *fields
+    new:
+      section: "New Feature for %{product_name}"
+      header: New Feature Details
+      description: Please provide the details of the new Feature you'd like to add to %{product_name}.
+      form: *form
+    edit:
+      section: "%{feature_name}"
+      header: Edit Feature Details
+      description: You can update the details or settings for %{feature_name} below.
+      form: *form
+    notifications:
+      created: Feature was successfully created.
+      updated: Feature was successfully updated.
+      destroyed: Feature was successfully destroyed.
+  account:
+    features: *features
+  activerecord:
+    attributes:
+      feature:
+        name: *name
+        description: *description
+        url: *url
+        # 🚅 super scaffolding will insert new activerecord attributes above this line.
+        created_at: *created_at
+        updated_at: *updated_at
