@@ -36,9 +36,9 @@ en:
         label: *category
         heading: *category
         options:
-          one: One
-          two: Two
-          three: Three
+          one: Product Functionality
+          two: Service
+          three: Price
       # 🚅 super scaffolding will insert new fields above this line.
       created_at:
         _: &created_at Added
